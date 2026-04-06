@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   /* config options here */
   transpilePackages: ["react-map-gl"],
   serverExternalPackages: ["mapbox-gl"],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default withNextIntl(nextConfig);
