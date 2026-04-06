@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
 import { useAuth } from '@/context/AuthContext';
