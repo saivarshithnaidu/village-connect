@@ -294,78 +294,78 @@ export default function CreateProblemPage() {
           <FiArrowLeft /> {locale === 'te' ? 'తిరిగి వెళ్ళు' : 'Back'}
         </button>
 
-        <div className="bg-white rounded-[3rem] shadow-2xl p-10 border border-slate-100 relative overflow-hidden">
-          <div className="mb-12 relative z-10">
-            <h1 className="text-4xl font-black text-slate-900 mb-3 tracking-tight">Report a Problem</h1>
-            <p className="text-slate-400 font-bold max-w-md">Help your local community. Every report counts!</p>
+        <div className="bg-white rounded-[2rem] sm:rounded-[3rem] shadow-2xl p-6 sm:p-10 border border-slate-100 relative overflow-hidden">
+          <div className="mb-8 sm:mb-12 relative z-10">
+            <h1 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3 tracking-tight">Report a Problem</h1>
+            <p className="text-slate-400 font-bold max-w-md text-sm sm:text-base text-xs">Help your local community. Every report counts!</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
+          <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10 relative z-10">
             {error && (
-              <div className="p-5 bg-red-50 border border-red-100 text-red-600 rounded-2xl flex items-center gap-3 text-sm font-black uppercase transition-all animate-bounce">
+              <div className="p-4 sm:p-5 bg-red-50 border border-red-100 text-red-600 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-black uppercase transition-all animate-bounce">
                 <FiInfo className="shrink-0" /> {error}
               </div>
             )}
 
             {/* Gallery + Camera */}
             <div className="group">
-              <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[10px] mb-3 ml-1">Visual Information</label>
+              <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[9px] sm:text-[10px] mb-3 ml-1">Visual Information</label>
               
               {showCamera ? (
-                <div className="relative h-96 bg-black rounded-[2.5rem] overflow-hidden mb-6 shadow-2xl border-4 border-slate-900">
+                <div className="relative h-[400px] sm:h-96 bg-black rounded-2xl sm:rounded-[2.5rem] overflow-hidden mb-6 shadow-2xl border-2 sm:border-4 border-slate-900">
                   <video ref={videoRef} autoPlay playsInline className="w-full h-full object-cover" />
                   <canvas ref={canvasRef} className="hidden" />
                   
-                  <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-6 pointer-events-auto">
+                  <div className="absolute bottom-6 sm:bottom-10 left-0 right-0 flex justify-center gap-4 sm:gap-6 pointer-events-auto">
                     <button 
                       type="button" 
                       onClick={capturePhoto}
-                      className="w-20 h-20 bg-white rounded-full border-8 border-green-500 flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-2xl"
+                      className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full border-4 sm:border-8 border-green-500 flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-2xl"
                     />
                     <button 
                       type="button" 
                       onClick={stopCamera}
-                      className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center hover:scale-110 active:scale-90 transition-all text-white shadow-2xl"
+                      className="w-16 h-16 sm:w-20 sm:h-20 bg-red-500 rounded-full flex items-center justify-center hover:scale-110 active:scale-90 transition-all text-white shadow-2xl"
                     >
-                      <FiX size={30} />
+                      <FiX size={24} />
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4">
                   {imagePreviews.map((src, idx) => (
-                    <div key={idx} className="relative h-32 rounded-3xl overflow-hidden group shadow-lg border border-slate-100">
+                    <div key={idx} className="relative h-24 sm:h-32 rounded-2xl sm:rounded-3xl overflow-hidden group shadow-lg border border-slate-100">
                       <img src={src} className="w-full h-full object-cover" alt={`Preview ${idx}`} />
-                      <button type="button" onClick={() => removeImage(idx)} className="absolute top-2 right-2 p-2 bg-red-500/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button type="button" onClick={() => removeImage(idx)} className="absolute top-2 right-2 p-1.5 sm:p-2 bg-red-500/80 text-white rounded-full sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                         <FiX size={12} />
                       </button>
                     </div>
                   ))}
                   
-                  <div className="h-32 bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center hover:bg-white hover:border-green-400 transition-all cursor-pointer relative">
+                  <div className="h-24 sm:h-32 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center hover:bg-white hover:border-green-400 transition-all cursor-pointer relative">
                      <FiPlus size={20} className="text-slate-300 mb-1" />
-                     <span className="text-[8px] font-black uppercase text-slate-400">Gallery</span>
+                     <span className="text-[7px] sm:text-[8px] font-black uppercase text-slate-400">Gallery</span>
                      <input type="file" onChange={handleImageChange} multiple className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" />
                   </div>
 
                   <button 
                     type="button" 
                     onClick={startCamera}
-                    className="h-32 bg-emerald-50 border-2 border-emerald-100 rounded-3xl flex flex-col items-center justify-center hover:bg-emerald-100 hover:border-green-400 transition-all cursor-pointer"
+                    className="h-24 sm:h-32 bg-emerald-50 border-2 border-emerald-100 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center hover:bg-emerald-100 hover:border-green-400 transition-all cursor-pointer"
                   >
                      <FiVideo size={20} className="text-emerald-400 mb-1" />
-                     <span className="text-[8px] font-black uppercase text-emerald-500">Live Camera</span>
+                     <span className="text-[7px] sm:text-[8px] font-black uppercase text-emerald-500">Live Camera</span>
                   </button>
                 </div>
               )}
 
-              <div className="flex justify-between items-center">
-                 <p className="text-[10px] font-bold text-slate-400 flex items-center gap-2">
-                    <FiInfo className="text-green-400" /> Upload or capture clear images for AI analysis.
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                 <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 flex items-center gap-2">
+                    <FiInfo className="text-green-400 shrink-0" /> Clear images improve AI accuracy.
                  </p>
                  {imagePreviews.length > 0 && !showCamera && (
-                    <button type="button" disabled={isEnhancing} onClick={handleSmartEnhance} className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-600 rounded-xl text-[10px] font-black uppercase hover:bg-green-100 transition-all disabled:opacity-50">
-                      {isEnhancing ? <><div className="w-3 h-3 border-2 border-green-600 border-t-transparent rounded-full animate-spin" /> AI Thinking...</> : <><FiZap /> Smart Enhance</>}
+                    <button type="button" disabled={isEnhancing} onClick={handleSmartEnhance} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-green-50 text-green-600 rounded-xl text-[9px] sm:text-[10px] font-black uppercase hover:bg-green-100 transition-all disabled:opacity-50 border border-green-100">
+                      {isEnhancing ? <><div className="w-3 h-3 border-2 border-green-600 border-t-transparent rounded-full animate-spin" /> AI Processing...</> : <><FiZap /> Smart Enhance</>}
                     </button>
                  )}
               </div>
@@ -374,64 +374,64 @@ export default function CreateProblemPage() {
             {/* Title */}
             <div className="relative">
               <div className="flex justify-between items-center mb-2 ml-1">
-                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[10px]">Title</label>
-                {aiData?.title && <span className="text-[8px] font-black bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full animate-pulse"><FiZap size={8} /> AI SUGGESTED</span>}
+                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[9px] sm:text-[10px]">Title</label>
+                {aiData?.title && <span className="text-[7px] sm:text-[8px] font-black bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full animate-pulse flex items-center gap-1"><FiZap size={8} /> AI SUGGESTED</span>}
               </div>
               <div className="relative">
                 <FiBox className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 z-10" />
-                <input type="text" name="title" value={formData.title} onChange={handleChange} className="block w-full pl-11 pr-4 py-4 bg-emerald-50 border border-slate-200 rounded-2xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-white transition-all font-bold text-lg" placeholder="Short title..." />
+                <input type="text" name="title" value={formData.title} onChange={handleChange} className="block w-full pl-11 pr-4 py-3.5 sm:py-4 bg-emerald-50 border border-slate-200 rounded-2xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-white transition-all font-bold text-base sm:text-lg" placeholder="Short title..." />
               </div>
             </div>
 
             {/* Map */}
             <div className="group">
               <div className="flex justify-between items-center mb-2 ml-1">
-                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[10px]">Pin Location</label>
-                <button type="button" onClick={handleGetLocation} className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-green-600 hover:text-green-800 transition-colors">
-                  {isGettingLocation ? <FiCheckCircle className="animate-spin" /> : <FiMapPin />} Use My Location
+                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[9px] sm:text-[10px]">Pin Location</label>
+                <button type="button" onClick={handleGetLocation} className="flex items-center gap-1 text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-green-600 hover:text-green-800 transition-colors">
+                  {isGettingLocation ? <FiCheckCircle className="animate-spin text-xs" /> : <FiMapPin className="text-xs" />} {isGettingLocation ? 'Locating...' : 'Use My Location'}
                 </button>
               </div>
-              <div className="h-80 bg-slate-100 rounded-[2.5rem] border border-slate-100 overflow-hidden shadow-inner relative">
+              <div className="h-64 sm:h-80 bg-slate-100 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 overflow-hidden shadow-inner relative">
                 <MapComponent markers={coords ? [{ id: 'temp', lat: coords.lat, lng: coords.lng, title: 'Pinned Location', category: 'current' }] : []} onMapClick={(xy) => setCoords(xy)} />
               </div>
             </div>
 
             {/* Hierarchy */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-50 p-7 rounded-[2.5rem] border border-slate-100 shadow-inner">
+            <div className="space-y-4 md:space-y-0 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 bg-slate-50 p-5 sm:p-7 rounded-2xl sm:rounded-[2.5rem] border border-slate-100 shadow-inner">
                 <div>
-                   <label className="block text-[10px] font-black text-slate-800 uppercase tracking-widest mb-3 ml-1">District</label>
-                   <select value={formData.district_id} onChange={(e) => { const d = districts.find(d => d.id === e.target.value); setFormData(prev => ({ ...prev, district_id: e.target.value, district: d?.name || '' })); }} className="w-full p-5 bg-white border-2 border-slate-200 rounded-2xl text-base font-black text-black transition-all outline-none">
+                   <label className="block text-[9px] sm:text-[10px] font-black text-slate-800 uppercase tracking-widest mb-2 sm:mb-3 ml-1">District</label>
+                   <select value={formData.district_id} onChange={(e) => { const d = districts.find(d => d.id === e.target.value); setFormData(prev => ({ ...prev, district_id: e.target.value, district: d?.name || '' })); }} className="w-full p-4 sm:p-5 bg-white border-2 border-slate-200 rounded-2xl text-sm sm:text-base font-black text-black transition-all outline-none">
                       <option value="">DISTRICT...</option>
                       {districts.map(d => <option key={d.id} value={d.id}>{d.name} ({d.name_te})</option>)}
                    </select>
                 </div>
                 <div>
-                   <div className="flex justify-between items-center mb-3 ml-1">
-                      <label className="block text-[10px] font-black text-slate-800 uppercase tracking-widest leading-none">Mandal</label>
+                   <div className="flex justify-between items-center mb-2 sm:mb-3 ml-1">
+                      <label className="block text-[9px] sm:text-[10px] font-black text-slate-800 uppercase tracking-widest leading-none">Mandal</label>
                       {formData.district_id && !isLoadingMandals && (
                         <button type="button" onClick={() => setUseManualMandal(!useManualMandal)} className="flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-lg text-[8px] font-black uppercase tracking-tight hover:bg-black hover:text-white transition-all shadow-sm">
                            {useManualMandal ? <><FiSearch /> Registry</> : <><FiEdit3 /> Type</>}
                         </button>
                       )}
                    </div>
-                   {isLoadingMandals ? <div className="p-5 bg-white border rounded-2xl animate-pulse text-[8px] font-black text-slate-400">FETCHING...</div> : useManualMandal ? <input type="text" value={formData.mandal} onChange={(e) => setFormData(prev => ({ ...prev, mandal: e.target.value, mandal_id: 'custom' }))} placeholder="Mandal..." className="w-full p-5 bg-white border-2 border-green-200 rounded-2xl text-base font-black text-black outline-none" /> : (
-                      <select value={formData.mandal_id} disabled={!formData.district_id} onChange={(e) => { const m = mandals.find(m => m.id === e.target.value); setFormData(prev => ({ ...prev, mandal_id: e.target.value, mandal: m?.name || '' })); }} className="w-full p-5 bg-white border-2 border-slate-200 rounded-2xl text-base font-black text-black transition-all outline-none">
+                   {isLoadingMandals ? <div className="p-4 sm:p-5 bg-white border rounded-2xl animate-pulse text-[8px] font-black text-slate-400">FETCHING...</div> : useManualMandal ? <input type="text" value={formData.mandal} onChange={(e) => setFormData(prev => ({ ...prev, mandal: e.target.value, mandal_id: 'custom' }))} placeholder="Mandal..." className="w-full p-4 sm:p-5 bg-white border-2 border-green-200 rounded-2xl text-sm sm:text-base font-black text-black outline-none" /> : (
+                      <select value={formData.mandal_id} disabled={!formData.district_id} onChange={(e) => { const m = mandals.find(m => m.id === e.target.value); setFormData(prev => ({ ...prev, mandal_id: e.target.value, mandal: m?.name || '' })); }} className="w-full p-4 sm:p-5 bg-white border-2 border-slate-200 rounded-2xl text-sm sm:text-base font-black text-black transition-all outline-none">
                          <option value="">{mandals.length === 0 ? "NONE" : "CHOOSE..."}</option>
                          {mandals.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
                       </select>
                    )}
                 </div>
                 <div>
-                   <div className="flex justify-between items-center mb-3 ml-1">
-                      <label className="block text-[10px] font-black text-slate-800 uppercase tracking-widest leading-none">Village</label>
+                   <div className="flex justify-between items-center mb-2 sm:mb-3 ml-1">
+                      <label className="block text-[9px] sm:text-[10px] font-black text-slate-800 uppercase tracking-widest leading-none">Village</label>
                       {(formData.mandal_id || useManualMandal) && !isLoadingVillages && (
                         <button type="button" onClick={() => setUseManualVillage(!useManualVillage)} className="flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-lg text-[8px] font-black uppercase tracking-tight hover:bg-black hover:text-white transition-all shadow-sm">
                            {useManualVillage ? <><FiSearch /> Registry</> : <><FiEdit3 /> Type</>}
                         </button>
                       )}
                    </div>
-                   {isLoadingVillages ? <div className="p-5 bg-white border rounded-2xl animate-pulse text-[8px] font-black text-slate-400">FETCHING...</div> : useManualVillage ? <input type="text" value={formData.village} onChange={(e) => setFormData(prev => ({ ...prev, village: e.target.value, village_id: 'custom', location: `${e.target.value}, ${formData.mandal}` }))} placeholder="Village..." className="w-full p-5 bg-white border-2 border-green-200 rounded-2xl text-base font-black text-black outline-none" /> : (
-                      <select value={formData.village_id} disabled={!formData.mandal_id && !useManualMandal} onChange={(e) => { const v = villages.find(v => v.id === e.target.value); setFormData(prev => ({ ...prev, village_id: e.target.value, village: v?.name || '', location: `${v?.name}, ${formData.mandal}` })); }} className="w-full p-5 bg-white border-2 border-slate-200 rounded-2xl text-base font-black text-black transition-all outline-none">
+                   {isLoadingVillages ? <div className="p-4 sm:p-5 bg-white border rounded-2xl animate-pulse text-[8px] font-black text-slate-400">FETCHING...</div> : useManualVillage ? <input type="text" value={formData.village} onChange={(e) => setFormData(prev => ({ ...prev, village: e.target.value, village_id: 'custom', location: `${e.target.value}, ${formData.mandal}` }))} placeholder="Village..." className="w-full p-4 sm:p-5 bg-white border-2 border-green-200 rounded-2xl text-sm sm:text-base font-black text-black outline-none" /> : (
+                      <select value={formData.village_id} disabled={!formData.mandal_id && !useManualMandal} onChange={(e) => { const v = villages.find(v => v.id === e.target.value); setFormData(prev => ({ ...prev, village_id: e.target.value, village: v?.name || '', location: `${v?.name}, ${formData.mandal}` })); }} className="w-full p-4 sm:p-5 bg-white border-2 border-slate-200 rounded-2xl text-sm sm:text-base font-black text-black transition-all outline-none">
                          <option value="">{villages.length === 0 ? "NONE" : "CHOOSE..."}</option>
                          {villages.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
                       </select>
@@ -442,31 +442,31 @@ export default function CreateProblemPage() {
             {/* Description */}
             <div className="relative">
               <div className="flex justify-between items-center mb-2 ml-1">
-                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[10px]">Description</label>
-                {aiData?.description && <span className="text-[8px] font-black bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full animate-pulse"><FiZap size={8} /> AI GENERATED</span>}
+                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[9px] sm:text-[10px]">Description</label>
+                {aiData?.description && <span className="text-[7px] sm:text-[8px] font-black bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full animate-pulse flex items-center gap-1"><FiZap size={8} /> AI GENERATED</span>}
               </div>
-              <textarea name="description" value={formData.description} onChange={handleChange} rows={4} className="block w-full px-4 py-4 bg-emerald-50 border border-slate-200 rounded-[2rem] text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-white transition-all font-bold" placeholder="Problem details..." />
+              <textarea name="description" value={formData.description} onChange={handleChange} rows={4} className="block w-full px-4 py-4 bg-emerald-50 border border-slate-200 rounded-2xl sm:rounded-[2rem] text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-white transition-all font-bold text-sm sm:text-base" placeholder="Problem details..." />
             </div>
 
             {/* Category */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               <div>
-                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[10px] mb-2 ml-1">Category</label>
-                <select name="category" value={formData.category} onChange={handleChange} className="block w-full p-4 bg-emerald-50 border border-slate-200 rounded-2xl font-bold">
+                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[9px] sm:text-[10px] mb-2 ml-1">Category</label>
+                <select name="category" value={formData.category} onChange={handleChange} className="block w-full p-4 bg-emerald-50 border border-slate-200 rounded-2xl font-bold text-sm sm:text-base">
                   <option value="infrastructure">Infrastructure</option><option value="water">Water</option><option value="roads">Roads</option><option value="electricity">Electricity</option><option value="sanitation">Sanitation</option><option value="health">Health</option><option value="other">Other</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[10px] mb-2 ml-1">Urgency</label>
-                <div className="flex gap-4">
+                <label className="block text-sm font-black text-slate-900 uppercase tracking-widest text-[9px] sm:text-[10px] mb-2 ml-1">Urgency</label>
+                <div className="flex gap-2 sm:gap-4">
                   {['low', 'medium', 'high'].map(p => (
-                    <button key={p} type="button" onClick={() => setFormData({...formData, priority: p})} className={`flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${formData.priority === p ? 'bg-slate-900 text-white shadow-lg' : 'bg-emerald-50 text-slate-400 hover:bg-emerald-100'}`}>{p}</button>
+                    <button key={p} type="button" onClick={() => setFormData({...formData, priority: p})} className={`flex-1 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-[8px] sm:text-[10px] font-black uppercase tracking-widest transition-all ${formData.priority === p ? 'bg-slate-900 text-white shadow-lg' : 'bg-emerald-50 text-slate-400 hover:bg-emerald-100'}`}>{p}</button>
                   ))}
                 </div>
               </div>
             </div>
 
-            <button type="submit" disabled={isSubmitting} className="w-full py-5 bg-green-600 hover:bg-slate-900 text-white rounded-[2rem] font-black uppercase tracking-widest transition-all hover:scale-[1.02] shadow-2xl disabled:opacity-50 flex items-center justify-center gap-3">
+            <button type="submit" disabled={isSubmitting} className="w-full py-4 sm:py-5 bg-green-600 hover:bg-slate-900 text-white rounded-2xl sm:rounded-[2rem] font-black uppercase tracking-widest transition-all hover:scale-[1.01] sm:hover:scale-[1.02] shadow-2xl disabled:opacity-50 flex items-center justify-center gap-3 text-sm sm:text-base">
               {isSubmitting ? 'SUBMITTING...' : <><FiSend /> SUBMIT REPORT</>}
             </button>
           </form>

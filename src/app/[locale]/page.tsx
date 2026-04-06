@@ -16,22 +16,22 @@ export default function Home() {
         </div>
         
         <div className="container relative z-10 mx-auto px-6 text-center">
-          <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight mb-8">
+          <h1 className="text-4xl sm:text-7xl font-extrabold tracking-tight mb-6 sm:mb-8">
             Village <span className="text-green-300">Connect</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-green-100 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+          <p className="text-lg sm:text-2xl text-green-100 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light">
             {t('hero_subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
               href="/register" 
-              className="px-8 py-4 bg-green-500 hover:bg-green-400 text-white rounded-full font-bold text-lg shadow-xl shadow-green-900/40 transition-all hover:-translate-y-1"
+              className="w-full sm:w-auto px-8 py-4 bg-green-500 hover:bg-green-400 text-white rounded-full font-bold text-lg shadow-xl shadow-green-900/40 transition-all hover:-translate-y-1"
             >
               {t('hero_cta')}
             </Link>
             <Link 
               href="/problems" 
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md rounded-full font-bold text-lg transition-all hover:-translate-y-1"
+              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md rounded-full font-bold text-lg transition-all hover:-translate-y-1"
             >
               {t('view_problems')}
             </Link>
@@ -87,38 +87,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust & Safety Section */}
-      <section className="py-20 bg-slate-100">
-        <div className="container mx-auto px-6">
-          <div className="bg-white rounded-[40px] p-10 sm:p-20 shadow-xl flex flex-col md:flex-row items-center gap-12">
-            <div className="md:w-1/2">
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">{t('reliability_title')}</h2>
+      <section className="py-12 sm:py-20 bg-slate-100">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="bg-white rounded-[2rem] sm:rounded-[40px] p-8 sm:p-20 shadow-xl flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">{t('reliability_title')}</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 bg-green-100 p-2 rounded-full text-green-600">
+                  <div className="mt-1 bg-green-100 p-2 rounded-full text-green-600 shrink-0">
                     <FiCheckCircle />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg text-slate-900">{t('verified_reports_title')}</h4>
-                    <p className="text-slate-600">{t('verified_reports_desc')}</p>
+                    <p className="text-slate-600 text-sm sm:text-base">{t('verified_reports_desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 bg-emerald-100 p-2 rounded-full text-emerald-600">
+                  <div className="mt-1 bg-emerald-100 p-2 rounded-full text-emerald-600 shrink-0">
                     <FiShield />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg text-slate-900">{t('secure_access_title')}</h4>
-                    <p className="text-slate-600">{t('secure_access_desc')}</p>
+                    <p className="text-slate-600 text-sm sm:text-base">{t('secure_access_desc')}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="md:w-1/2 grid grid-cols-2 gap-4">
-              <div className="bg-green-600 rounded-3xl h-48 flex items-center justify-center text-white text-5xl font-bold shadow-lg">
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4 w-full">
+              <div className="bg-green-600 rounded-3xl h-32 sm:h-48 flex items-center justify-center text-white text-3xl sm:text-5xl font-bold shadow-lg">
                 1K+
               </div>
-              <div className="bg-slate-900 rounded-3xl h-48 flex items-center justify-center text-white text-3xl font-bold mt-12 shadow-lg">
+              <div className="bg-slate-900 rounded-3xl h-32 sm:h-48 flex items-center justify-center text-white text-2xl sm:text-3xl font-bold mt-8 sm:mt-12 shadow-lg">
                 100+
               </div>
             </div>

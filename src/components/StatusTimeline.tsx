@@ -31,8 +31,8 @@ export default function StatusTimeline({ status, isVerified, assignedTo, timesta
   ];
 
   return (
-    <div className="bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-xl mb-12">
-      <h3 className="text-sm font-black text-slate-900 uppercase tracking-[0.2em] mb-10 border-b border-slate-50 pb-4">
+    <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-slate-100 shadow-xl mb-12 overflow-hidden">
+      <h3 className="text-xs font-black text-slate-900 uppercase tracking-[0.2em] mb-8 sm:mb-10 border-b border-slate-50 pb-4">
         Resolution Journey
       </h3>
       <div className="flex flex-col relative">

@@ -131,63 +131,72 @@ export default function ProblemsPage() {
         </div>
 
         {/* Filters & Search */}
-        <div className="bg-white p-6 rounded-[2rem] shadow-xl shadow-slate-200 border border-slate-100 mb-10 flex flex-wrap items-center gap-4">
-          <div className="flex-grow min-w-[200px]">
-            <div className="relative">
-              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input 
-                type="text" 
-                placeholder={t('search_placeholder')}
-                className="w-full pl-11 pr-4 py-3 bg-emerald-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all text-sm font-medium text-slate-900 placeholder:text-slate-400"
-              />
-            </div>
+        <div className="bg-white p-4 sm:p-6 rounded-[2rem] shadow-xl shadow-slate-200 border border-slate-100 mb-10 space-y-4">
+          <div className="relative">
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input 
+              type="text" 
+              placeholder={t('search_placeholder')}
+              className="w-full pl-11 pr-4 py-3 bg-emerald-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all text-sm font-medium text-slate-900 placeholder:text-slate-400"
+            />
           </div>
-          <div className="flex items-center gap-3">
-            <FiFilter className="text-slate-400 ml-2" />
-            <select 
-              className="bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900"
-              value={filter.category}
-              onChange={(e) => setFilter({...filter, category: e.target.value})}
-            >
-              <option value="">{t('all_categories')}</option>
-              <option value="infrastructure">{t('infrastructure')}</option>
-              <option value="health">{t('health')}</option>
-              <option value="education">{t('education')}</option>
-              <option value="agriculture">{t('agriculture')}</option>
-              <option value="water">{t('water')}</option>
-              <option value="electricity">{t('electricity')}</option>
-              <option value="transport">{t('transport')}</option>
-              <option value="other">{t('other')}</option>
-            </select>
-            <select 
-              className="bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900"
-              value={filter.status}
-              onChange={(e) => setFilter({...filter, status: e.target.value})}
-            >
-              <option value="">{t('all_status')}</option>
-              <option value="open">{t('status_open')}</option>
-              <option value="in-progress">{t('status_in_progress')}</option>
-              <option value="resolved">{t('status_resolved')}</option>
-              <option value="closed">{t('status_closed')}</option>
-            </select>
-            <select 
-              className="bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900"
-              value={filter.district}
-              onChange={(e) => setFilter({...filter, district: e.target.value})}
-            >
-              <option value="">All Districts</option>
-              {districts.map(d => (
-                <option key={d.id} value={d.name}>{d.name} ({d.name_te})</option>
-              ))}
-            </select>
-            <select 
-              className="bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900"
-              value={filter.urgency}
-              onChange={(e) => setFilter({...filter, urgency: e.target.value})}
-            >
-              <option value="">Any Urgency</option>
-              <option value="urgent">Urgent 🔥</option>
-            </select>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="relative col-span-2 md:col-span-1">
+              <select 
+                className="w-full bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900 appearance-none"
+                value={filter.category}
+                onChange={(e) => setFilter({...filter, category: e.target.value})}
+              >
+                <option value="">{t('all_categories')}</option>
+                <option value="infrastructure">{t('infrastructure')}</option>
+                <option value="health">{t('health')}</option>
+                <option value="education">{t('education')}</option>
+                <option value="agriculture">{t('agriculture')}</option>
+                <option value="water">{t('water')}</option>
+                <option value="electricity">{t('electricity')}</option>
+                <option value="transport">{t('transport')}</option>
+                <option value="other">{t('other')}</option>
+              </select>
+            </div>
+            
+            <div className="relative col-span-2 md:col-span-1">
+              <select 
+                className="w-full bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900 appearance-none"
+                value={filter.status}
+                onChange={(e) => setFilter({...filter, status: e.target.value})}
+              >
+                <option value="">{t('all_status')}</option>
+                <option value="open">{t('status_open')}</option>
+                <option value="in-progress">{t('status_in_progress')}</option>
+                <option value="resolved">{t('status_resolved')}</option>
+                <option value="closed">{t('status_closed')}</option>
+              </select>
+            </div>
+
+            <div className="relative col-span-1">
+              <select 
+                className="w-full bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900 appearance-none"
+                value={filter.district}
+                onChange={(e) => setFilter({...filter, district: e.target.value})}
+              >
+                <option value="">All Districts</option>
+                {districts.map(d => (
+                  <option key={d.id} value={d.name}>{d.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="relative col-span-1">
+              <select 
+                className="w-full bg-emerald-50 border border-slate-200 rounded-2xl px-4 py-3 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-500 text-slate-900 appearance-none"
+                value={filter.urgency}
+                onChange={(e) => setFilter({...filter, urgency: e.target.value})}
+              >
+                <option value="">Any Urgency</option>
+                <option value="urgent">Urgent 🔥</option>
+              </select>
+            </div>
           </div>
         </div>
 

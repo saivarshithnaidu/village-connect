@@ -158,31 +158,37 @@ export default function VillageAssistant() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[999]">
+    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[999]">
       {/* Floating Button */}
       {!isOpen && (
         <button 
           onClick={() => setIsOpen(true)}
-          className="w-16 h-16 bg-green-600 hover:bg-slate-900 text-white rounded-full shadow-2xl flex items-center justify-center transition-all scale-100 hover:scale-110 active:scale-95 group"
+          className="w-14 h-14 sm:w-16 sm:h-16 bg-green-600 hover:bg-slate-900 text-white rounded-full shadow-2xl flex items-center justify-center transition-all scale-100 hover:scale-110 active:scale-95 group"
         >
-          <FiMessageSquare size={28} />
-          <span className="absolute right-20 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Village Assistant AI</span>
+          <FiMessageSquare size={24} className="sm:hidden" />
+          <FiMessageSquare size={28} className="hidden sm:block" />
+          <span className="hidden sm:block absolute right-20 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Village Assistant AI</span>
         </button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <div className={`bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden flex flex-col transition-all duration-300 ${isMinimized ? 'w-80 h-16' : 'w-[420px] h-[650px]'}`}>
+        <div className={`bg-white sm:rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden flex flex-col transition-all duration-300 ${isMinimized ? 'w-[280px] sm:w-80 h-16' : 'fixed inset-0 sm:static sm:w-[420px] sm:h-[650px]'}`}>
           {/* Header */}
-          <div className={`p-5 flex items-center justify-between transition-colors ${isMinimized ? 'bg-white' : 'bg-green-600 text-white'}`}>
+          <div className={`p-4 sm:p-5 flex items-center justify-between transition-colors ${isMinimized ? 'bg-white' : 'bg-green-600 text-white'}`}>
              <div className="flex items-center gap-3">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isMinimized ? 'bg-green-100 text-green-600' : 'bg-white text-green-600'}`}>
+                <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${isMinimized ? 'bg-green-100 text-green-600' : 'bg-white text-green-600'}`}>
                    <FiZap size={16} />
                 </div>
-                <h4 className="font-black text-sm uppercase tracking-widest">Village Assistant</h4>
+                <h4 className="font-black text-xs sm:text-sm uppercase tracking-widest">Village Assistant</h4>
              </div>
-             <div className="flex items-center gap-2">
-                <button onClick={() => setIsMinimized(!isMinimized)} className="p-2 hover:bg-black/10 rounded-full transition-colors">
+             <div className="flex items-center gap-1 sm:gap-2">
+                {!isMinimized && (
+                   <button onClick={() => setIsMinimized(true)} className="sm:hidden p-2 hover:bg-black/10 rounded-full transition-colors">
+                      <FiMinimize2 />
+                   </button>
+                )}
+                <button onClick={() => setIsMinimized(!isMinimized)} className="hidden sm:block p-2 hover:bg-black/10 rounded-full transition-colors">
                    {isMinimized ? <FiMaximize2 /> : <FiMinimize2 />}
                 </button>
                 <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-black/10 rounded-full transition-colors">
@@ -194,34 +200,34 @@ export default function VillageAssistant() {
           {!isMinimized && (
             <>
               {/* Messages Area */}
-              <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-emerald-50/20 scroll-smooth">
+              <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6 bg-emerald-50/20 scroll-smooth">
                 {messages.map((m, i) => (
                   <div key={i} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                     <div className="flex items-center gap-2 group max-w-[95%]">
                        {m.role === 'assistant' && (
                           <button 
                             onClick={() => speakText(m.content)}
-                            className="p-2 bg-white text-slate-400 hover:text-green-600 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="p-2 bg-white text-slate-400 hover:text-green-600 rounded-full shadow-sm opacity-0 sm:group-hover:opacity-100 transition-opacity"
                             title="Listen"
                           >
                             <FiVolume2 size={14} />
                           </button>
                        )}
-                       <div className={`p-5 rounded-3xl font-bold leading-relaxed shadow-sm ${
+                       <div className={`p-4 sm:p-5 rounded-2xl sm:rounded-3xl font-bold leading-relaxed shadow-sm ${
                          m.role === 'user' 
-                           ? 'bg-slate-900 text-slate-100 rounded-tr-none text-base' 
-                           : m.isError ? 'bg-red-50 text-red-600 border border-red-100 rounded-tl-none text-base' : 'bg-white text-slate-700 border border-slate-100 rounded-tl-none text-base'
+                           ? 'bg-slate-900 text-slate-100 rounded-tr-none text-sm sm:text-base' 
+                           : m.isError ? 'bg-red-50 text-red-600 border border-red-100 rounded-tl-none text-sm sm:text-base' : 'bg-white text-slate-700 border border-slate-100 rounded-tl-none text-sm sm:text-base'
                        }`}>
                           {m.content}
                        </div>
                     </div>
 
                     {m.role === 'assistant' && m.category && !m.isError && (
-                       <div className="mt-3 ml-12 w-[85%] bg-white border-2 border-green-50 rounded-2xl p-4 shadow-sm space-y-4">
+                       <div className="mt-2 sm:mt-3 ml-0 sm:ml-12 w-full sm:w-[85%] bg-white border-2 border-green-50 rounded-2xl p-3 sm:p-4 shadow-sm space-y-3">
                           <div className="flex items-center justify-between">
                              <div className="flex items-center gap-2">
-                                <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Topic:</span>
-                                <span className={`text-[11px] font-black px-3 py-1 rounded-full flex items-center gap-2 ${
+                                <span className="text-[8px] sm:text-[10px] font-black uppercase text-slate-400 tracking-widest">Topic:</span>
+                                <span className={`text-[9px] sm:text-[11px] font-black px-2 sm:px-3 py-1 rounded-full flex items-center gap-2 ${
                                    m.category.toLowerCase().includes('water') ? 'bg-blue-50 text-blue-600' :
                                    m.category.toLowerCase().includes('electricity') ? 'bg-amber-50 text-amber-600' :
                                    m.category.toLowerCase().includes('road') ? 'bg-slate-100 text-slate-600' :
@@ -238,9 +244,9 @@ export default function VillageAssistant() {
                           {m.navigation && (
                              <button 
                                 onClick={() => window.open(`/${locale}${m.navigation}`, '_self')}
-                                className="w-full py-3 bg-green-600 hover:bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-green-100 transition-all flex items-center justify-center gap-2"
+                                className="w-full py-2.5 sm:py-3 bg-green-600 hover:bg-slate-900 text-white rounded-xl text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-lg shadow-green-100 transition-all flex items-center justify-center gap-2"
                              >
-                                <FiLayout size={14} /> View Related {m.category} Issues
+                                <FiLayout size={14} /> View Issues
                              </button>
                           )}
                        </div>
@@ -248,27 +254,27 @@ export default function VillageAssistant() {
                   </div>
                 ))}
                 {isLoading && (
-                   <div className="flex items-center gap-2 text-slate-400 text-[10px] font-black uppercase tracking-widest px-4">
-                      <FiRefreshCw className="animate-spin text-green-500" /> AI Analyzing...
+                   <div className="flex items-center gap-2 text-slate-400 text-[8px] sm:text-[10px] font-black uppercase tracking-widest px-4">
+                      <FiRefreshCw className="animate-spin text-green-500" /> AI Thinking...
                    </div>
                 )}
               </div>
 
               {/* Input Area */}
-              <div className="p-6 border-t border-slate-50 bg-white">
-                <form onSubmit={handleSendMessage} className="relative flex items-center gap-3">
+              <div className="p-4 sm:p-6 border-t border-slate-50 bg-white">
+                <form onSubmit={handleSendMessage} className="relative flex items-center gap-2 sm:gap-3">
                    <div className="relative flex-1">
                       <input 
                          type="text"
                          value={input}
                          onChange={(e) => setInput(e.target.value)}
-                         placeholder={isListening ? "Listening..." : "Type or click mic to speak..."}
-                         className={`w-full pl-6 pr-14 py-5 bg-white border ${isListening ? 'border-green-500 ring-2 ring-green-100' : 'border-slate-200'} rounded-2xl outline-none focus:ring-2 focus:ring-green-600 transition-all font-black text-lg text-black placeholder:text-slate-400`}
+                         placeholder={isListening ? "Listening..." : "Your message..."}
+                         className={`w-full pl-4 sm:pl-6 pr-10 sm:pr-14 py-3 sm:py-5 bg-white border ${isListening ? 'border-green-500 ring-2 ring-green-100' : 'border-slate-200'} rounded-xl sm:rounded-2xl outline-none focus:ring-2 focus:ring-green-600 transition-all font-black text-sm sm:text-lg text-black placeholder:text-slate-400`}
                       />
                       <button 
                         type="button"
                         onClick={toggleListening}
-                        className={`absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-xl transition-all ${
+                        className={`absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-xl transition-all ${
                           isListening ? 'bg-red-500 text-white animate-pulse' : 'bg-slate-100 text-slate-400 hover:bg-green-100 hover:text-green-600'
                         }`}
                       >
@@ -278,13 +284,13 @@ export default function VillageAssistant() {
                    <button 
                      type="submit"
                      disabled={isLoading || !input.trim()}
-                     className="p-5 bg-green-600 text-white rounded-2xl shadow-lg hover:bg-slate-900 transition-all active:scale-95 disabled:opacity-50"
+                     className="p-3 sm:p-5 bg-green-600 text-white rounded-xl sm:rounded-2xl shadow-lg hover:bg-slate-900 transition-all active:scale-95 disabled:opacity-50"
                    >
                       <FiSend size={24} />
                    </button>
                 </form>
-                <p className="mt-4 text-center text-[9px] font-black text-slate-300 uppercase tracking-widest flex items-center justify-center gap-2">
-                   <FiBox /> Multilingual Voice Enabled • Stability Mode
+                <p className="mt-3 sm:mt-4 text-center text-[7px] sm:text-[9px] font-black text-slate-300 uppercase tracking-widest flex items-center justify-center gap-1 sm:gap-2">
+                   <FiBox /> Multilingual AI Active
                 </p>
               </div>
             </>
