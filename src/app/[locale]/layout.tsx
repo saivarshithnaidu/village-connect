@@ -15,6 +15,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Village Connect | Bridging Community Problems & Solutions",
   description: "A platform for villagers to report problems and volunteers to provide solutions.",
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  }
 };
 
 export default async function RootLayout({

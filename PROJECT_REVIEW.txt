@@ -1,0 +1,45 @@
+VILLAGECONNECT - PROJECT REVIEW & ARCHITECTURE DOCUMENT
+======================================================
+Generated on: 2026-04-06
+
+1. PROJECT OVERVIEW
+-------------------
+VillageConnect is a high-fidelity, production-grade community platform designed to bridge the gap between rural citizens and resolution providers (volunteers/admins). It empowers villagers to report localized issues (infrastructure, water, roads, etc.) using AI-assisted reporting tools and multi-lingual support.
+
+2. CORE FEATURES
+----------------
+*   Smart Reporting: AI-powered issue analysis using Gemini Vision to auto-generate titles, descriptions, and severity levels from uploaded photos.
+*   Visual Submission: Integrated professional Live Camera and multi-image gallery support for providing clear evidence.
+*   Localized Experience: Full end-to-end support for English and Telugu (via next-intl), including AI-powered on-the-fly translation of issue descriptions.
+*   Intelligent Registry: A cascading location selection system (District > Mandal > Village) with a "Manual Fallback" mechanism for unregistered locations.
+*   Real-time Infrastructure: Powered by Supabase Realtime for instant updates on issue status, upvotes, and community comments.
+*   Actionable Engagement: Role-based workflows for Villagers (report), Volunteers (claim/resolve), and Admins (verify/moderate).
+*   Outcome Intelligence: Automated AI resolution synthesis that generates professional "Case Reports" once a problem is closed.
+
+3. TECHNOLOGY STACK
+-------------------
+*   Framework: Next.js 15.1.9 (Stable & Secure Branch)
+*   UI Engine: React 19.0.0
+*   Logic Layer: TypeScript 5+
+*   Styling: Tailwind CSS 4 / Vanilla CSS
+*   Backend-as-a-Service: Supabase (PostgreSQL, Auth, Realtime, RLS)
+*   AI Integration: Google Gemini AI (Generative Vision & Translation)
+*   Localization: next-intl
+*   Mapping: Mapbox GL / React-Map-GL
+*   Icons: Lucide-react / React-Icons
+
+4. ARCHITECTURE HIGHLIGHTS
+--------------------------
+*   Promise-based Routing: Fully compliant with Next.js 15/16 async parameter patterns.
+*   Secure Data Access: Enforced Row Level Security (RLS) on all Supabase tables.
+*   Dynamic Components: Map components and AI assistants loaded with dynamic imports to optimize LCP and interaction speed.
+*   Hybrid Database: Managed via Supabase with custom migrations for complex location hierarchies and junction tables (upvotes/solvers).
+
+5. PRODUCTION STATUS
+--------------------
+*   Build Status: 100% Clean (Local & Vercel)
+*   Security: Fully patched against CVE-2025-66478 via Next.js 15.1.9 upgrade.
+*   Deployment: Automated CI/CD pipeline targeting Vercel Production.
+
+======================================================
+VillageConnect: Empowering Communities Through Technology.
