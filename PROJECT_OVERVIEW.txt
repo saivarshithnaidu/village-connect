@@ -1,0 +1,59 @@
+================================================================================
+                           VILLAGE CONNECT - PROJECT OVERVIEW
+================================================================================
+
+VillageConnect is a high-impact digital platform designed to bridge the gap 
+between rural citizens (Villagers) and community leaders (Admins/Volunteers). 
+The goal is to provide a transparent, efficient way to report and resolve local 
+infrastructure and social issues.
+
+--------------------------------------------------------------------------------
+1. THE CORE PROBLEM
+--------------------------------------------------------------------------------
+In many villages, problems like broken water pipes, poor road conditions, or 
+electricity failures go unreported for weeks because there is no direct channel 
+to the authorities. VillageConnect solves this by putting the power of reporting 
+in every villager's pocket.
+
+--------------------------------------------------------------------------------
+2. KEY ROLES (WHO IS WHO?)
+--------------------------------------------------------------------------------
+
+A. THE VILLAGER (Reporter)
+   - Roles: Report new problems, track the status of their reports, and upvote 
+            existing issues to show community priority.
+   - Purpose: Be the "eyes" of the village.
+
+B. THE VOLUNTEER (Worker/Problem Solver)
+   - Roles: View reported problems, propose technical or manual solutions, and 
+            update the progress of assigned tasks.
+   - Purpose: Perform the physical work needed to fix the community.
+
+C. THE ADMIN (Authority/Panchayat)
+   - Roles: Full dashboard access. Verify if reports are legitimate, assign 
+            specific workers to tasks, and monitor village-wide statistics 
+            (completion rates, category distribution).
+   - Purpose: Direct and oversee the entire community improvement process.
+
+--------------------------------------------------------------------------------
+3. DATA FLOW (HOW IT WORKS)
+--------------------------------------------------------------------------------
+1. REPORT: A Villager posts an issue (e.g., "Water Leak in Sector 4").
+2. PRIORITY: Other villagers upvote the issue, moving it to the top of the list.
+3. VERIFY: An Admin verifies the report to ensure it's not spam.
+4. PROPOSE: A Volunteer proposes a fix (e.g., "Replacing the main PVC pipe").
+5. ASSIGN: The Admin assigns the Volunteer to the task.
+6. RESOLVE: Once fixed, the status is updated to "Resolved", and the Villager 
+   is notified of the success.
+
+--------------------------------------------------------------------------------
+4. TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+- FRONTEND: Next.js 15 (Modern, Fast, Server-Side Rendering)
+- STYLING: Tailwind CSS 4 (Premium Glassmorphism & Modern UI)
+- DATABASE: Supabase (PostreSQL for data, Auth for secure login)
+- BACKEND: Next.js API Routes (Serverless architecture)
+
+================================================================================
+            Village Connect: Empowering Communities, One Fix at a Time.
+================================================================================
